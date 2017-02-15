@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import '../styles/App.css';
 
 import CurrentWeather from './CurrentWeather';
@@ -14,7 +13,8 @@ class App extends Component {
       city: 'Toronto',
       currentTemp: '',
       currentWind: '',
-      currentIcon: ''
+      currentIcon: '',
+      forecast: ''
     }
   }
 
@@ -26,8 +26,6 @@ class App extends Component {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=${UNIT}&APPID=${API_KEY}`)
           .then(response => response.json())
           .then((data) => {
-            console.log(data);
-            console.log(data.main.temp_max)
             this.setState({
               city: `${data.name}, ${data.sys.country}`,
               currentTemp: data.main.temp,
@@ -35,6 +33,12 @@ class App extends Component {
               currentIcon: data.weather[0].icon
             })
           })
+
+    fetch(`http://api.openweathermap.org/data/2.5/forecast/city?q=${CITY}&units=${UNIT}&APPID=${API_KEY}`)
+        .then(response => response.json())
+        .then((data) => {
+          this.setState({ forecast: data.list })
+        })
   }
 
   render() {
@@ -46,7 +50,7 @@ class App extends Component {
                         wind={this.state.currentWind}
                         icon={this.state.currentIcon} 
                       />
-        <Forecast />
+        <Forecast forecast={this.state.forecast} />
       </div>
     );
   }

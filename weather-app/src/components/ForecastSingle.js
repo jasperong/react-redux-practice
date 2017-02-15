@@ -1,14 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-const CurrentWeather = (props) => {
+const ForecastSingle = (props) => {
+  const date = new Date(props.time * 1000),
+        hours = date.getHours(),
+        minutes = "0" + date.getMinutes()
 
   return(
-    <div className="text-center">
+     <div className="col-sm-2">
       <div>
         Icon: <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt="" />
       </div>
       <div>
-        Location: {props.city}
+        Time: {hours}: {minutes.substr(-2)}
       </div>
       <div>
         Temp: {Math.round(props.temp)} C
@@ -20,4 +23,4 @@ const CurrentWeather = (props) => {
   )
 }
 
-export default CurrentWeather
+export default ForecastSingle
