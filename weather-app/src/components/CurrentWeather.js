@@ -1,9 +1,24 @@
 import React from 'react';
 
 const CurrentWeather = (props) => {
+
   return(
-    <div>
-      Current Weather
+    <div className="text-center">
+      <div>
+        Icon
+      </div>
+      <div>
+        Location
+      </div>
+      <div>
+        Max
+      </div>
+      <div>
+        Min
+      </div>
+      <div>
+        Wind Speed
+      </div>
     </div>
   )
 }
