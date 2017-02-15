@@ -5,19 +5,16 @@ const CurrentWeather = (props) => {
   return(
     <div className="text-center">
       <div>
-        Icon
+        Icon: <img src={`http://openweathermap.org/img/w/${props.icon}.png`} />
       </div>
       <div>
-        Location
+        Location: {props.city}
       </div>
       <div>
-        Max
+        Temp: {props.temp}
       </div>
       <div>
-        Min
-      </div>
-      <div>
-        Wind Speed
+        Wind Speed: {props.wind}
       </div>
     </div>
   )
