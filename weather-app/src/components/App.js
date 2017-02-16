@@ -5,6 +5,9 @@ import CurrentWeather from './CurrentWeather';
 import Forecast from './Forecast';
 import Search from './Search';
 
+const API_KEY = '528998fd4f7072b2ad9ad59ad4502191';
+const UNIT = 'metric';
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -16,14 +19,14 @@ class App extends Component {
       currentIcon: '',
       forecast: ''
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchCurrent = this.fetchCurrent.bind(this);
+    this.fetchForecast = this.fetchForecast.bind(this);
   }
-
-  componentDidMount() {
-    const API_KEY = '528998fd4f7072b2ad9ad59ad4502191';
-    const CITY = 'toronto';
-    const UNIT = 'metric';
-
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=${UNIT}&APPID=${API_KEY}`)
+  
+  fetchCurrent(city) {
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city.toLowerCase()}&units=${UNIT}&APPID=${API_KEY}`)
           .then(response => response.json())
           .then((data) => {
             this.setState({
@@ -33,18 +36,30 @@ class App extends Component {
               currentIcon: data.weather[0].icon
             })
           })
+  }
 
-    fetch(`http://api.openweathermap.org/data/2.5/forecast/city?q=${CITY}&units=${UNIT}&APPID=${API_KEY}`)
+  fetchForecast(city) {
+    fetch(`http://api.openweathermap.org/data/2.5/forecast/city?q=${city.toLocaleLowerCase()}&units=${UNIT}&APPID=${API_KEY}`)
         .then(response => response.json())
         .then((data) => {
           this.setState({ forecast: data.list })
         })
   }
 
+  handleSubmit(city) {
+    console.log(city)
+
+    this.setState({
+      city: city
+    })
+    this.fetchCurrent(city);
+    this.fetchForecast(city);
+  }
+
   render() {
     return (
       <div className="container">
-        <Search />
+        <Search onSubmit={this.handleSubmit} />
         <CurrentWeather city={this.state.city}
                         temp={this.state.currentTemp}
                         wind={this.state.currentWind}
