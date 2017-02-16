@@ -11,7 +11,6 @@ class Search extends Component {
   }
 
   handleChange(e) {
-    console.log(e.target.value)
     this.setState({
       value: e.target.value
     })

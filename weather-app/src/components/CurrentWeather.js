@@ -5,7 +5,7 @@ const CurrentWeather = (props) => {
   return(
     <div className="text-center">
       <div>
-        Icon: <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt="" />
+        <i className={`wi wi-current wi-owm-${props.icon}`}></i>
       </div>
       <div>
         Location: {props.city}

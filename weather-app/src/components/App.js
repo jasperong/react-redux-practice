@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
+import '../styles/weather-icons.min.css';
 
 import CurrentWeather from './CurrentWeather';
 import Forecast from './Forecast';
@@ -13,7 +14,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      city: 'Toronto',
+      city: '',
       currentTemp: '',
       currentWind: '',
       currentIcon: '',
@@ -33,7 +34,7 @@ class App extends Component {
               city: `${data.name}, ${data.sys.country}`,
               currentTemp: data.main.temp,
               currentWind: data.wind.speed,
-              currentIcon: data.weather[0].icon
+              currentIcon: data.weather[0].id
             })
           })
   }

@@ -15,7 +15,8 @@ const Forecast = (props) => {
           return <ForecastSingle temp={day.main.temp}
                                   time={day.dt}
                                   wind={day.wind.speed}
-                                  icon={day.weather[0].icon}
+                                  icon={day.weather[0].id}
+                                  key={day.dt}
                                    />
         }) 
       }

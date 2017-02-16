@@ -22,3 +22,13 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.wi {
+  transform: scale(4);
+  display: block;
+}
+
+.wi-current {
+  transform: scale(4);
+  color: tomato;
+}

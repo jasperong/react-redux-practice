@@ -8,7 +8,7 @@ const ForecastSingle = (props) => {
   return(
      <div className="col-sm-2">
       <div>
-        Icon: <img src={`http://openweathermap.org/img/w/${props.icon}.png`} alt="" />
+        <i className={`wi wi-owm-${props.icon}`} ></i>
       </div>
       <div>
         Time: {hours}: {minutes.substr(-2)}
