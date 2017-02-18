@@ -1,34 +1,34 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+body {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 2rem;
 }
 
 .wi {
-  transform: scale(4);
-  display: block;
+  font-size: 4rem;
 }
 
 .wi-current {
-  transform: scale(4);
-  color: tomato;
+  font-size: 8rem;
+}
+
+.wi-temp {
+  font-size: 2.5rem;
+}
+
+.wi-time, .wi-wind {
+  font-size: 2.3rem;
+}
+
+.wi-temp-current {
+  font-size: 6rem;
+}
+
+.forecast-single, .current-weather {
+  margin: 1rem auto;
+}
+
+.current-weather, .wi-wind-current {
+  font-size: 5rem;
 }

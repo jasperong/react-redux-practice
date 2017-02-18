@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import '../styles/weather-icons.min.css';
+import '../styles/weather-icons-wind.min.css';
 
 import CurrentWeather from './CurrentWeather';
 import Forecast from './Forecast';
@@ -17,6 +18,7 @@ class App extends Component {
       city: '',
       currentTemp: '',
       currentWind: '',
+      currentWindDir:'',
       currentIcon: '',
       forecast: ''
     }
@@ -34,6 +36,7 @@ class App extends Component {
               city: `${data.name}, ${data.sys.country}`,
               currentTemp: data.main.temp,
               currentWind: data.wind.speed,
+              currentWindDir: data.wind.deg,
               currentIcon: data.weather[0].id
             })
           })
@@ -47,9 +50,13 @@ class App extends Component {
         })
   }
 
+// For styling. Remove once css is done
+  componentDidMount() {
+    this.fetchCurrent('toronto');
+    this.fetchForecast('toronto');
+  }
+  
   handleSubmit(city) {
-    console.log(city)
-
     this.setState({
       city: city
     })
@@ -63,6 +70,7 @@ class App extends Component {
         <Search onSubmit={this.handleSubmit} />
         <CurrentWeather city={this.state.city}
                         temp={this.state.currentTemp}
+                        windDir={this.state.currentWindDir}
                         wind={this.state.currentWind}
                         icon={this.state.currentIcon} 
                       />

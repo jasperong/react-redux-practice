@@ -2,22 +2,22 @@ import React from 'react'
 
 const ForecastSingle = (props) => {
   const date = new Date(props.time * 1000),
-        hours = date.getHours(),
-        minutes = "0" + date.getMinutes()
+        hours = date.getHours()
 
   return(
-     <div className="col-sm-2">
+     <div className="col-sm-3 text-center forecast-single">
       <div>
         <i className={`wi wi-owm-${props.icon}`} ></i>
       </div>
       <div>
-        Time: {hours}: {minutes.substr(-2)}
+        <i className={`wi wi-time wi-time-${hours < 12 ? hours : hours - 12}`} ></i>
+        {hours < 12 ? `${hours} AM` : `${hours - 12} PM`}
       </div>
       <div>
-        Temp: {Math.round(props.temp)} C
+        {Math.round(props.temp)} <i className="wi wi-temp wi-celsius"></i>
       </div>
       <div>
-        Wind Speed: {props.wind}
+        {props.wind} m/s <i className={`wi wi-wind from-${props.windDir}-deg`}></i>
       </div>
     </div>
   )
