@@ -23,7 +23,7 @@ class Search extends Component {
 
   render() {
     return(
-      <div className="row">
+      <div className="row search-bar">
         <form onSubmit={this.handleSubmit}>
           <div className="col-sm-6 col-sm-offset-2">
             <input className="form-control" value={this.state.value} onChange={this.handleChange} />

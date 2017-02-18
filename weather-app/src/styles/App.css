@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
-body {
+* {
   font-family: 'Varela Round', sans-serif;
+}
+
+body {
   font-size: 2rem;
+  color: #280a94;
+  background-image: url('http://i.imgur.com/fG3uWKg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
 }
 
 .wi {
@@ -31,4 +39,8 @@ body {
 
 .current-weather, .wi-wind-current {
   font-size: 5rem;
+}
+
+.search-bar {
+  margin: 2rem auto;
 }
