@@ -6,19 +6,21 @@ const CurrentWeather = (props) => {
   }
 
   return(
-    <div className="text-center current-weather">
-      <div>
-        <i className={`wi wi-current wi-owm-${props.icon}`}></i>
-      </div>
-      <div className="details">
-        <div>
+    <div className="text-center">
+      <div className="current-weather">
+        <h1 id="city-h1">
           {props.city}
-        </div>
+        </h1>
         <div>
-          {Math.round(props.temp)} <i className="wi wi-temp-current wi-celsius"></i>
+          <i className={`wi wi-current wi-owm-${props.icon}`}></i>
         </div>
-        <div>
-          {props.wind} m/s <i className={`wi wi-wind-current wi-wind from-${props.windDir}-deg`}></i>
+        <div className="details">
+          <div>
+            {Math.round(props.temp)} <i className="wi wi-temp-current wi-celsius"></i>
+          </div>
+          <div>
+            {props.wind} m/s <i className={`wi wi-wind-current wi-wind from-${props.windDir}-deg`}></i>
+          </div>
         </div>
       </div>
     </div>

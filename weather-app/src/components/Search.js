@@ -25,8 +25,11 @@ class Search extends Component {
     return(
       <div className="row search-bar">
         <form onSubmit={this.handleSubmit}>
-          <div className="col-sm-6 col-sm-offset-2">
-            <input className="form-control" value={this.state.value} onChange={this.handleChange} />
+          <div className="col-sm-5 col-sm-offset-3">
+            <input className="form-control" 
+                  value={this.state.value} 
+                  onChange={this.handleChange}
+                  placeholder="Please enter your location" />
           </div>
           <div className="col-sm-2">
             <button type="submit" className="btn btn-default">
