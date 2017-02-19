@@ -6,7 +6,7 @@
 
 body {
   font-size: 2rem;
-  color: #280a94;
+  color: #e3e3e3;
   background-image: url('http://i.imgur.com/fG3uWKg.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -35,7 +35,7 @@ body {
 
 .forecast-single, .current-weather {
   margin: 1rem auto;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 100, 0.15);
   padding: 3rem;
   border-radius: 40px;
 }
