@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
+import '../styles/awesomplete.css';
 import '../styles/weather-icons.min.css';
 import '../styles/weather-icons-wind.min.css';
 
@@ -9,6 +10,7 @@ import Search from './Search';
 
 const API_KEY = '528998fd4f7072b2ad9ad59ad4502191';
 const UNIT = 'metric';
+
 
 class App extends Component {
   constructor(props) {

@@ -10,6 +10,10 @@ body {
   background-image: url('http://i.imgur.com/fG3uWKg.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
 }
 
