@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Awesomplete from '../vendor/awesomplete.js';
+import { Typeahead } from 'react-bootstrap-typeahead';
 
 class Search extends Component {
   constructor(props) {
@@ -13,9 +13,10 @@ class Search extends Component {
   }
   
 
-  handleChange(e) {
+  handleChange(text) {
+    console.log(text)
     this.setState({
-      value: e.target.value
+      value: text
     })
   }
 
@@ -33,9 +34,6 @@ class Search extends Component {
                 return `${city.name}, ${city.country}`
               })
             });
-            new Awesomplete(this.searchInput, {
-              list: this.state.citiesList
-            })
           })
     }
 
@@ -45,12 +43,11 @@ class Search extends Component {
       <div className="row search-bar">
         <form onSubmit={this.handleSubmit}>
           <div className="col-sm-5 col-sm-offset-3">
-            <input className="form-control awesomplete"
-                  id="search-input"
-                  ref={(input) => {this.searchInput = input}}
-                  value={this.state.value} 
-                  onChange={this.handleChange}
-                  placeholder="Please enter your location" />
+            <Typeahead options={this.state.citiesList}
+                        onSearch={this.handleSubmit}
+                        onInputChange={this.handleChange}
+                        minLength={2}
+                        placeholder="Please enter your location" />
           </div>
           <div className="col-sm-2">
             <button type="submit" className="btn btn-default">
