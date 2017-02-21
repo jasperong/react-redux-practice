@@ -16,7 +16,6 @@ class Search extends Component {
   
 
   handleChange(text) {
-    console.log(text)
     this.setState({
       value: text
     })
@@ -24,12 +23,6 @@ class Search extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.value}&key=${GOOGLE_KEY}`)
-          .then((response) => response.json())
-          .then((data) => {
-            const lat = data.results[0].geometry.location.lat;
-            const long = data.results[0].geometry.location.long;
-          })
     this.props.onSubmit(this.state.value)
   }
 
