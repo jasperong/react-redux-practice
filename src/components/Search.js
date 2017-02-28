@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Typeahead } from 'react-bootstrap-typeahead';
 
-const GOOGLE_KEY = 'AIzaSyDcFQmOtiza7NcZ_V7R9safFEwCk4PcS2M';
-
 class Search extends Component {
   constructor(props) {
     super(props)

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import '../styles/App.css';
 import '../styles/weather-icons.min.css';
 import '../styles/weather-icons-wind.min.css';
@@ -7,6 +9,7 @@ import CurrentWeather from './CurrentWeather';
 import Forecast from './Forecast';
 import Search from './Search';
 
+const MASHAPE_KEY = 'CEyPIWnvp2mshzF7Qr39tgt2nvskp1q4dTOjsnDQC94hfK7oYf';
 const API_KEY = '528998fd4f7072b2ad9ad59ad4502191';
 const UNIT = 'metric';
 
@@ -29,25 +32,45 @@ class App extends Component {
   }
   
   fetchCurrent(city) {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city.toLowerCase()}&units=${UNIT}&APPID=${API_KEY}`)
-          .then(response => response.json())
-          .then((data) => {
-            this.setState({
-              city: `${data.name}, ${data.sys.country}`,
-              currentTemp: data.main.temp,
-              currentWind: data.wind.speed,
-              currentWindDir: data.wind.deg,
-              currentIcon: data.weather[0].id
-            })
-          })
+    axios.get('https://community-open-weather-map.p.mashape.com/weather', 
+      {
+        params: {
+          'q': city.toLowerCase(),
+          'units': UNIT,
+          'lang': 'en',
+          'APPID': API_KEY
+        },
+        headers: {
+          'X-Mashape-Key': MASHAPE_KEY
+        }
+      }).then((response) => {
+          const data = response.data;
+          console.log(data)
+          this.setState({
+                    city: `${data.name}, ${data.sys.country}`,
+                    currentTemp: data.main.temp,
+                    currentWind: data.wind.speed,
+                    currentWindDir: data.wind.deg,
+                    currentIcon: data.weather[0].id
+                  })
+      })
   }
 
   fetchForecast(city) {
-    fetch(`http://api.openweathermap.org/data/2.5/forecast/city?q=${city.toLocaleLowerCase()}&units=${UNIT}&APPID=${API_KEY}`)
-        .then(response => response.json())
-        .then((data) => {
-          this.setState({ forecast: data.list })
-        })
+    axios.get('https://community-open-weather-map.p.mashape.com/forecast', 
+      {
+        params: {
+          'q': city.toLowerCase(),
+          'units': UNIT,
+          'APPID': API_KEY
+        },
+        headers: {
+          'X-Mashape-Key': MASHAPE_KEY
+        }
+      })
+      .then((response) => {
+            this.setState({ forecast: response.data.list })
+          })
   }
   
   handleSubmit(city) {
