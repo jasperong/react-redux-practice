@@ -28,7 +28,7 @@ class Search extends Component {
 
   // Gets list of cities from API for autocomplete / typeahead functionality
   componentDidMount() {
-    axios.get('http://data.okfn.org/data/core/world-cities/r/world-cities.json')
+    axios.get('https://raw.githubusercontent.com/lutangar/cities.json/master/cities.json')
           .then((response) => {
             this.setState({
               citiesList: response.data.map((city) => {
