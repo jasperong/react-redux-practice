@@ -30,7 +30,10 @@ class App extends Component {
     this.fetchCurrent = this.fetchCurrent.bind(this);
     this.fetchForecast = this.fetchForecast.bind(this);
   }
-  
+
+  // Gets current weather conditions from API
+  // Sets application state based on response
+  // Passes various state params as props to CurrentWeather component
   fetchCurrent(city) {
     axios.get('https://community-open-weather-map.p.mashape.com/weather', 
       {
@@ -45,7 +48,6 @@ class App extends Component {
         }
       }).then((response) => {
           const data = response.data;
-          console.log(data)
           this.setState({
                     city: `${data.name}, ${data.sys.country}`,
                     currentTemp: data.main.temp,
@@ -56,6 +58,9 @@ class App extends Component {
       })
   }
 
+  // Gets 5 day hourly forecast from API
+  // Sets application state for forecast from response
+  // Passes this.state.forecast as props to Forecast component
   fetchForecast(city) {
     axios.get('https://community-open-weather-map.p.mashape.com/forecast', 
       {
@@ -73,6 +78,8 @@ class App extends Component {
           })
   }
   
+  // Is passed as props to Search component
+  // Calls fetchCurrent and fetchForecast when called by Search component
   handleSubmit(city) {
     this.setState({
       city: city

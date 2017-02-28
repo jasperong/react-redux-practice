@@ -5,7 +5,7 @@ import ForecastSingle from './ForecastSingle';
 const Forecast = (props) => {
 
   if (!props.forecast) {
-    return <div>Forecast not retrieved..</div>
+    return <div></div>
   }
 
   return(

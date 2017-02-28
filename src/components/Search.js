@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Typeahead } from 'react-bootstrap-typeahead';
 
 class Search extends Component {
@@ -12,24 +13,25 @@ class Search extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-
+  // Sets state according to current input value
   handleChange(text) {
     this.setState({
       value: text
     })
   }
 
+  // Calls App components's submit handler which fetches the weather APIs
   handleSubmit(e) {
     e.preventDefault()
     this.props.onSubmit(this.state.value)
   }
 
+  // Gets list of cities from API for autocomplete / typeahead functionality
   componentDidMount() {
-    fetch('http://data.okfn.org/data/core/world-cities/r/world-cities.json')
-          .then(response => response.json())
-          .then((data) => {
+    axios.get('http://data.okfn.org/data/core/world-cities/r/world-cities.json')
+          .then((response) => {
             this.setState({
-              citiesList: data.map((city) => {
+              citiesList: response.data.map((city) => {
                 return `${city.name}, ${city.country}`
               })
             });
@@ -42,6 +44,7 @@ class Search extends Component {
       <div className="row search-bar">
         <form onSubmit={this.handleSubmit}>
           <div className="col-sm-5 col-sm-offset-3">
+            {/* Vendor component for autocomplete */}
             <Typeahead options={this.state.citiesList}
                         onSearch={this.handleSubmit}
                         onInputChange={this.handleChange}
