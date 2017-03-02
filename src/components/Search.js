@@ -30,10 +30,12 @@ class Search extends Component {
   componentDidMount() {
     axios.get('https://raw.githubusercontent.com/lutangar/cities.json/master/cities.json')
           .then((response) => {
-            this.setState({
-              citiesList: response.data.map((city) => {
+            const citiesList = response.data.map((city) => {
                 return `${city.name}, ${city.country}`
-              })
+              });
+              
+            this.setState({
+              citiesList
             });
           })
     }
